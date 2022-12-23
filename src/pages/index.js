@@ -1,13 +1,14 @@
 import * as React from "react"
 import { Link } from "gatsby"
-// import { StaticImage } from "gatsby-plugin-image"
-
+import styled from "styled-components"
+//Components
 import Layout from "../components/layout"
 import Card from "../components/card"
 import Section from "../components/section"
 import Wave from "../components/Wave"
-// import Seo from "../components/seo"
-
+import Cell from "../components/cell"
+//Static Data
+import staticdata from "../../staticdata.json"
 //logos
 import logoSketch from "../images/logo-sketch.png"
 import logoFigma from "../images/logo-figma.png"
@@ -20,6 +21,26 @@ import wallpaper from "../images/wallpaper.jpg"
 import wallpaper2 from "../images/wallpaper2.jpg"
 import wallpaper3 from "../images/wallpaper3.jpg"
 import wallpaper4 from "../images/wallpaper4.jpg"
+//Styled Components
+const SectionCaption = styled.div`
+  font-weignt: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #94A4BA;
+  text-align: center;
+`
+const SectionCellGroup = styled.div`
+  max-width: 800px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  padding: 0 20px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`
 
 const IndexPage = () => (
   <Layout>
@@ -42,7 +63,7 @@ const IndexPage = () => (
           <img src={logoReact} width="50" />
           <img src={logoSwift} width="50" />
         </div>
-        <Wave/>
+        <Wave />
       </div>
     </div>
     <div className="Cards">
@@ -55,13 +76,28 @@ const IndexPage = () => (
           image={wallpaper2}
         />
         <Card title="Sound Design" text="5 sections" image={wallpaper3} />
+        <Card title="Design Systems " text="10 sections" image={wallpaper} />
         <Card title="APKit 2" text="10 sections" image={wallpaper4} />
+        <Card
+          title="React for designers"
+          text="12 sections"
+          image={wallpaper2}
+        />
       </div>
     </div>
-    <Section image={wallpaper2} logo={logoReact} title="React for Designers" text="Learn hoe to build a modern site using React and the most efficent libraries to get your site/product online. Get familier with components, Grid CSS, animations, interactions, dynamic data with Contentful and deploying your site with Netlify."/>
+    <Section
+      image={wallpaper2}
+      logo={logoReact}
+      title="React for Designers"
+      text="Learn hoe to build a modern site using React and the most efficent libraries to get your site/product online. Get familier with components, Grid CSS, animations, interactions, dynamic data with Contentful and deploying your site with Netlify."
+    />
+    <SectionCaption>12 sections - 6 hours</SectionCaption>
+    <SectionCellGroup>
+      {staticdata.cells.map(cell => (
+        <Cell title={cell.title} image={cell.image} />
+      ))}
+    </SectionCellGroup>
   </Layout>
 )
-
-// export const Head = () => <Seo title="Home" />
 
 export default IndexPage
