@@ -5,7 +5,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import Card from "../components/card"
 import Section from "../components/section"
-import Wave from "../components/Wave"
+import Wave from "../components/wave"
 import Cell from "../components/cell"
 //Static Data
 import staticdata from "../../staticdata.json"
